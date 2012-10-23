@@ -96,7 +96,6 @@ class Bn_short_names_ext
 	public function cp_js_end()
 	{
 		$this->EE->load->helper('array');
-		$this->EE->load->library('security');
 		
 		//get $_GET from the referring page
 		parse_str(parse_url(@$_SERVER['HTTP_REFERER'], PHP_URL_QUERY), $get);
@@ -116,7 +115,7 @@ class Bn_short_names_ext
 			if ($query->num_rows())
 			{
 				$this->EE->load->library('javascript');
-				$output .= '$(function(){$.each('.$this->EE->javascript->generate_json($query->result_array()).',function(i,f){$("#hold_field_"+f.id+" label:first span").append($("<span>{"+f.name+"}</span>").click(function(e){e.stopPropagation();}));});});'."\r\n";
+				$output .= '$(function(){$.each('.$this->EE->javascript->generate_json($query->result_array()).',function(i,f){$("#hold_field_"+f.id+" label:first span").append($("<span>{"+f.name+"}</span>").click(function(e){e.stopPropagation();}));});})'."\r\n";
 			}
 		}
 		
